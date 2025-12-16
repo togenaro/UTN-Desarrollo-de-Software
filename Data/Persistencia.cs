@@ -99,7 +99,7 @@ public class Persistencia
         double total = 0;
         foreach (Mamifero animal in _mamiferos)
         {
-            total = animal.TieneAlimentacion(tipoAlimentacion) ? animal.CalcularCantidadDeComida() : 0;
+            total += animal.TieneAlimentacion(tipoAlimentacion) ? animal.CalcularCantidadDeComida() : 0;
         }
         return total;
     }
