@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dsw2025Ej06.Domain;
 
-internal class Producto
+public class Producto
 {
     private int _codigo;
     private string _descripcion;
