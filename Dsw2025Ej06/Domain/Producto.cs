@@ -22,5 +22,10 @@ internal class Producto
         return _precioVenta / (1 + _impuesto);
     }
 
+    public void GetProducto()
+    {
+        Console.WriteLine($"[{_codigo} {_descripcion} [{_presentacion}]: {_precioVenta:C2}");
+    }
+
 
 }
