@@ -27,5 +27,18 @@ internal class Producto
         Console.WriteLine($"[{_codigo} {_descripcion} [{_presentacion}]: {_precioVenta:C2}");
     }
 
+    public int IncrementarStock()
+    {
+        return _stock++;
+    }
 
+    public int DecrementarStock()
+    {
+        return _stock--;
+    }
+
+    public int AumentarStock(int value)
+    {
+        return _stock + value;
+    }
 }
