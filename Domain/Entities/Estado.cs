@@ -1,4 +1,4 @@
-﻿namespace Dsw2025Ej8.Domain;
+﻿namespace Dsw2025Ej8.Domain.Entities;
 
 public enum Estado
 {
