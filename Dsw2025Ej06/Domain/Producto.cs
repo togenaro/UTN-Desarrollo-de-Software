@@ -17,6 +17,39 @@ public class Producto
     private char _presentacion;
     private DateTime _fechaAlta;
 
+    #region Getters y Setters
+    public int GetCodigo()
+    {
+        return _codigo;
+    }
+
+    public void SetCodigo(int value)
+    {
+        _codigo = value;
+    }
+
+    public string GetDescripcion()
+    {
+        return _descripcion;
+    }
+
+    public void SetDescription(string text)
+    {
+        _descripcion = text;
+    }
+
+    public bool GetIsActive()
+    {
+        return _isActive;
+    }
+
+    public void SetActive(bool value)
+    {
+        _isActive = value;
+    }
+    #endregion
+
+    #region Métodos del enunciado
     public double GetPrecioSinImpuesto()
     {
         return _precioVenta / (1 + _impuesto);
@@ -41,4 +74,5 @@ public class Producto
     {
         return _stock + value;
     }
+    #endregion
 }
