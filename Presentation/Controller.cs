@@ -6,63 +6,73 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dsw2025Ej8.Domain.Entities;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Principal;
+using System.Data;
 
 namespace Dsw2025Ej8.Presentation;
 
 public class Controller
 {
-    decimal monto;
-
     List<CuentaBancaria> Accounts = new List<CuentaBancaria>();
     Persistence Persistencia = new Persistence();
 
-    public void ObtainAccounts()
+    public Controller()
     {
         Accounts = Persistencia.GetCuentas();
     }
-    
-    public void DepositarDinero(CuentaBancaria account)
+
+    public List<CuentaBancaria> GetAccounts()
     {
-        if (monto <= 0) 
-        {
-            throw new Exception(); //MontoNoValido
-        } 
-
-        if(account.Estado is Estado.Inactiva)
-        {
-            throw new Exception(); //CuentaNoActiva
-        }
-
-
-        account.Depositar(monto);
+        return Accounts;
     }
 
-    public void RetirarDinero(CuentaBancaria account)
+
+    public void DepositarDinero(string code, decimal mount)
     {
-        if (monto <= 0)
+        var account = Accounts.Where(c => c.Numero == code).FirstOrDefault();
+        if (account is null) { throw new CuentaNoEncontrada("Cuenta no encontrada"); }
+
+        if (mount <= 0)
         {
-            throw new Exception(); //MontoNoValido
+            throw new MontoNoValido("Monto no valido"); //MontoNoValido
         }
 
         if (account.Estado is Estado.Inactiva)
         {
-            throw new Exception(); //CuentaNoActiva
+            throw new CuentaNoActiva("Cuenta no activa"); //CuentaNoActiva
+        }
+
+        account.Depositar(mount);
+    }
+
+    public void RetirarDinero(string code, decimal mount)
+    {
+        var account = Accounts.Where(c => c.Numero == code).FirstOrDefault();
+        if (account is null) { throw new Exception(); }
+
+        if (mount <= 0)
+        {
+            throw new MontoNoValido("Monto no valido"); //MontoNoValido
+        }
+
+        if (account.Estado is Estado.Inactiva)
+        {
+            throw new CuentaNoActiva("Cuenta no activa"); //CuentaNoActiva
         }
 
         if (account is CuentaCorriente cc)
         {
-            if (cc.Saldo - monto <= -cc.LimiteDeDescubierto) { cc.Retirar(monto); }
-            else { throw new Exception(); /*SaldoInsuficiente*/ }
+            if (cc.Saldo - mount <= -cc.LimiteDeDescubierto) { cc.Retirar(mount); }
+            else { throw new SaldoInsuficiente("Saldo insuficiente"); /*SaldoInsuficiente*/ }
         }
-        else { account.Retirar(monto);}
+        else { account.Retirar(mount); }
 
         if (account.Saldo < 0)
         {
             account.CambiarEstado(Estado.Suspendida);
 
-            throw new Exception(); //SaldoInsuficiente
+            throw new SaldoInsuficiente("Saldo insuficiente"); //SaldoInsuficiente
         }
-
     }
-
 }
