@@ -48,10 +48,8 @@ public class CuentaCorriente : CuentaBancaria
 
     public override void Retirar(decimal monto)
     {
-        if (Saldo - monto >= -LimiteDeDescubierto)
-        {
-            Saldo -= monto;
-        }
+        Saldo -= monto;
+
         if (Saldo < 0)
         {
             Estado = Estado.Suspendida;
