@@ -35,6 +35,11 @@ public class CajaDeAhorro : CuentaBancaria
     public override void Retirar(decimal monto)
     {
         Saldo -= monto;
+
+        if (Saldo < 0)
+        {
+            Estado = Estado.Suspendida;
+        }
     }
 
     public void AplicarInteres()
