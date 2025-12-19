@@ -57,7 +57,7 @@ public class Controller
 
         if (account is CuentaCorriente cc)
         {
-            if (cc.Saldo - mount <= -cc.LimiteDeDescubierto) { cc.Retirar(mount); }
+            if (cc.Saldo - mount >= -cc.LimiteDeDescubierto) { cc.Retirar(mount); }
             else { throw new SaldoInsuficiente("Saldo insuficiente"); /*SaldoInsuficiente*/ }
         }
         else { account.Retirar(mount); }

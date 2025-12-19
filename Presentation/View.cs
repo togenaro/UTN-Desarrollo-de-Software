@@ -16,7 +16,14 @@ public class View
 
             foreach (var account in Accounts)
             {
-                Console.WriteLine($"{account.Numero} - {account.GetType().Name} - {account.Saldo:C2}");
+                var anonymousClass = new
+                {
+                    numero = account.Numero,
+                    tipo = account.GetType().Name,
+                    saldo = account.Saldo,
+                };
+
+                Console.WriteLine($"{anonymousClass.numero} - {anonymousClass.tipo} - {anonymousClass.saldo:C2}");
             }
         }
         catch (Exception ex) { Console.WriteLine(ex.Message); }
