@@ -12,7 +12,7 @@ public class CuentaCorriente : CuentaBancaria
     private decimal _limiteDeDescubierto;
     private decimal _comision;
 
-    public CuentaCorriente(string numero, decimal saldo, string[] titulares, decimal limiteDeDescubierto, decimal tasaDeInteres, decimal comision) : base(numero, saldo, titulares)
+    public CuentaCorriente(string numero, decimal saldo, string[] titulares, decimal limiteDeDescubierto, decimal comision) : base(numero, saldo, titulares)
     {
         _limiteDeDescubierto = limiteDeDescubierto;
         _comision = comision;
