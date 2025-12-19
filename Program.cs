@@ -1,10 +1,11 @@
-﻿namespace Dsw2025Ej8
+﻿using Dsw2025Ej8.Domain.Entities;
+
+namespace Dsw2025Ej8;
+
+public class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            
-        }
+
     }
 }

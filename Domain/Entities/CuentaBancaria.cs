@@ -2,13 +2,13 @@
 
 public abstract class CuentaBancaria
 {
-    public string Numero { get; init; }
+    public string Numero { get; private init; }
 
-    public decimal Saldo { get; protected set; }
+    public decimal Saldo { get; private set; }
 
-    public Estado Estado { get;  protected set; }
+    public Estado Estado { get;  private set; }
 
-    protected string[] _titulares;
+    public string[] _titulares;
 
     public CuentaBancaria(string numero, decimal saldo, string[] titulares)
     {
