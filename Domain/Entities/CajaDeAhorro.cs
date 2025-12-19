@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dsw2025Ej8.Domain.Entities;
+﻿namespace Dsw2025Ej8.Domain.Entities;
 
 public class CajaDeAhorro : CuentaBancaria
 {
+    #region Propiedades
     public decimal TasaDeInteres { get; init; }
+    #endregion
 
+    #region Constructor
     public CajaDeAhorro(string numero, decimal saldo, string[] titulares) : base(numero, saldo, titulares)
     {
     }
+    #endregion
 
     #region Getters/Setters
     //public decimal GetTasaDeInteres()

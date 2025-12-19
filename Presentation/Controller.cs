@@ -1,33 +1,27 @@
 ﻿using Dsw2025Ej8.Data;
 using Dsw2025Ej8.Domain.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Dsw2025Ej8.Domain.Entities;
-using System.Security.Cryptography.X509Certificates;
-using System.Security.Principal;
 using System.Data;
 
 namespace Dsw2025Ej8.Presentation;
 
 public class Controller
 {
+    #region Dependencias/Constructores
     List<CuentaBancaria> Accounts = new List<CuentaBancaria>();
     Persistence Persistencia = new Persistence();
-
-    public Controller()
-    {
-        Accounts = Persistencia.GetCuentas();
-    }
-
     public List<CuentaBancaria> GetAccounts()
     {
         return Accounts;
     }
 
+    public Controller()
+    {
+        Accounts = Persistencia.GetCuentas();
+    }
+    #endregion
 
+    #region Métodos
     public void DepositarDinero(string code, decimal mount)
     {
         var account = Accounts.Where(c => c.Numero == code).FirstOrDefault();
@@ -75,4 +69,5 @@ public class Controller
             throw new SaldoInsuficiente("Saldo insuficiente"); //SaldoInsuficiente
         }
     }
+    #endregion
 }

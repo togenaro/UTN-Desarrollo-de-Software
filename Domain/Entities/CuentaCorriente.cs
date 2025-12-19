@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dsw2025Ej8.Domain.Entities;
+﻿namespace Dsw2025Ej8.Domain.Entities;
 
 public class CuentaCorriente : CuentaBancaria
 {
-
+    #region Propiedades
     public decimal LimiteDeDescubierto { get; init; }
     public decimal Comision { get; private set; }
+    #endregion
 
+    #region Constructor
     public CuentaCorriente(string numero, decimal saldo, string[] titulares, decimal comision) : base(numero, saldo, titulares)
     {
         Comision = comision;
     }
+    #endregion
 
     #region Getters/Setters
     //public decimal GetLimiteDeDescubierto()

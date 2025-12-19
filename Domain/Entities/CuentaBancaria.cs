@@ -2,6 +2,7 @@
 
 public abstract class CuentaBancaria
 {
+    #region Propiedades
     public string Numero { get; private init; }
 
     public decimal Saldo { get; protected set; }
@@ -9,7 +10,9 @@ public abstract class CuentaBancaria
     public Estado Estado { get;  protected set; }
 
     public string[] _titulares;
+    #endregion
 
+    #region Constructor
     public CuentaBancaria(string numero, decimal saldo, string[] titulares)
     {
         Numero = numero;
@@ -17,6 +20,7 @@ public abstract class CuentaBancaria
         Estado = Estado.Activa;
         _titulares = titulares;
     }
+    #endregion
 
     #region Getters/Setters
     //public string GetNumero()

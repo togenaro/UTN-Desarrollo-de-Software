@@ -1,11 +1,4 @@
-﻿using Dsw2025Ej8.Domain.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dsw2025Ej8.Presentation;
+﻿namespace Dsw2025Ej8.Presentation;
 
 public class View
 {
@@ -18,9 +11,6 @@ public class View
         try
         {
             // Operaciones
-
-            Controller.DepositarDinero("CC-123123123124", 123.44m);
-            Controller.RetirarDinero("CC-001", 123.44m);
 
             // Mostrar cuentas
 
