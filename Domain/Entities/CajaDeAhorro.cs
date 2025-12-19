@@ -8,11 +8,10 @@ namespace Dsw2025Ej8.Domain.Entities;
 
 public class CajaDeAhorro : CuentaBancaria
 {
-    public decimal TasaDeInteres { get; private set; }
+    public decimal TasaDeInteres { get; init; }
 
-    public CajaDeAhorro(string numero, decimal saldo, string[] titulares, decimal tasaDeInteres) : base(numero, saldo, titulares)
+    public CajaDeAhorro(string numero, decimal saldo, string[] titulares) : base(numero, saldo, titulares)
     {
-        TasaDeInteres = tasaDeInteres;
     }
 
     #region Getters/Setters
