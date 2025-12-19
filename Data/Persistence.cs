@@ -27,6 +27,8 @@ public class Persistence
 
     public List<CuentaBancaria> GetCuentas()
     {
+        Initialize();
+
         return Cuentas;
     }
 
