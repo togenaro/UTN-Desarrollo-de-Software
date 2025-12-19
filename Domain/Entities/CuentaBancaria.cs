@@ -2,44 +2,47 @@
 
 public abstract class CuentaBancaria
 {
-    protected string _numero;
-    protected decimal _saldo;
-    protected Estado _estado;
+    public string Numero { get; init; }
+
+    public decimal Saldo { get; protected set; }
+
+    public Estado Estado { get;  protected set; }
+
     protected string[] _titulares;
 
     public CuentaBancaria(string numero, decimal saldo, string[] titulares)
     {
-        _numero = numero;
-        _saldo = saldo;
-        _estado = Estado.Activa;
+        Numero = numero;
+        Saldo = saldo;
+        Estado = Estado.Activa;
         _titulares = titulares;
     }
 
     #region Getters/Setters
-    public string GetNumero()
-    {
-        return _numero;
-    }
+    //public string GetNumero()
+    //{
+    //    return _numero;
+    //}
 
-    public decimal GetSaldo()
-    {
-        return _saldo;
-    }
+    //public decimal GetSaldo()
+    //{
+    //    return _saldo;
+    //}
 
-    public Estado GetEstado()
-    {
-        return _estado;
-    }
+    //public Estado GetEstado()
+    //{
+    //    return _estado;
+    //}
 
-    public void SetEstado(Estado estado)
-    {
-        _estado = estado;
-    }
+    //public void SetEstado(Estado estado)
+    //{
+    //    _estado = estado;
+    //}
 
-    public string[] GetTitulares()
-    {
-        return _titulares;
-    }
+    //public string[] GetTitulares()
+    //{
+    //    return _titulares;
+    //}
     #endregion
 
     #region Métodos
