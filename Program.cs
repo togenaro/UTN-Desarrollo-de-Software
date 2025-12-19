@@ -11,5 +11,10 @@ public class Program
             TasaDeInteres = 0.05m
         };
 
+        var cuentaCorriente = new CuentaCorriente("P002", 100000.00m, ["Genaro"], 1400.40m)
+        {
+            LimiteDeDescubierto = 4000
+        };
+
     }
 }

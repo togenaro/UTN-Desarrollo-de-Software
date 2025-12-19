@@ -9,12 +9,11 @@ namespace Dsw2025Ej8.Domain.Entities;
 public class CuentaCorriente : CuentaBancaria
 {
 
-    public decimal LimiteDeDescubierto { get; private set; }
+    public decimal LimiteDeDescubierto { get; init; }
     public decimal Comision { get; private set; }
 
-    public CuentaCorriente(string numero, decimal saldo, string[] titulares, decimal limiteDeDescubierto, decimal comision) : base(numero, saldo, titulares)
+    public CuentaCorriente(string numero, decimal saldo, string[] titulares, decimal comision) : base(numero, saldo, titulares)
     {
-        LimiteDeDescubierto = limiteDeDescubierto;
         Comision = comision;
     }
 
