@@ -1,4 +1,7 @@
-﻿namespace Dsw2025Ej9.Bodegas;
+﻿using Dsw2025Ej9.Entidades;
+using System.Collections;
+
+namespace Dsw2025Ej9.Bodegas;
 
 /*
      * ¡Se decidió construir una bodega por cada tipo!
@@ -19,5 +22,19 @@
      */
 public class Generica<T>
 {
+    private readonly List<T> _items = [];
 
+    public void Agregar(T item)
+    {
+        _items.Add(item);
+    }
+
+    public T Obtener(int index)
+    {
+        if (_items.Count == 0 || index >= _items.Count)
+            throw new Exception("No hay elementos en la bodega");
+        return (T)_items[index]!;
+    }
+
+    public List<T> Listar() => _items;
 }

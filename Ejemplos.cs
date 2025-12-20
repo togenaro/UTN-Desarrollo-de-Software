@@ -1,5 +1,7 @@
 ﻿using Dsw2025Ej9.Bodegas;
 using Dsw2025Ej9.Entidades;
+using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Dsw2025Ej9;
 
@@ -62,7 +64,7 @@ internal class Ejemplos
         bAlimentos.Agregar(new Alimento("Manzana"));
         bHerramientas.Agregar(new Herramienta("Martillo"));
         bEnteros.Agregar(43);
-        
+
         Console.WriteLine("\nRecorriendo bodegas múltiples:");
         Console.WriteLine("\n--- Contenido Alimentos ---");
         foreach (Alimento a in bAlimentos.Listar())
@@ -77,8 +79,36 @@ internal class Ejemplos
             Console.WriteLine($"- {e}");
     }
 
+    //public static void BodegaGenerica()
+    //{
+    //    throw new NotImplementedException();
+    //}
+
     public static void BodegaGenerica()
     {
-        throw new NotImplementedException();
+
+        var bodega = new Generica<Object>();
+
+        var a1 = new Alimento("Pan");
+        var h1 = new Herramienta("Martillo", false);
+        var pe1 = new ProductoElectronico("Tetris", "Akme");
+
+        bodega.Agregar(a1);
+        bodega.Agregar(h1);
+        bodega.Agregar(pe1);
+
+        var items = bodega.Listar();
+
+        Listar(items);
+
+        static void Listar<T>(List<T> lista)
+        {
+            foreach (var item in lista)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+
     }
 }
