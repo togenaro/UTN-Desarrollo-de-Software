@@ -1,7 +1,13 @@
-﻿namespace Dsw2025Ej8.Domain.Exceptions;
+﻿using Dsw2025Ej8.Domain.Entities;
+
+namespace Dsw2025Ej8.Domain.Exceptions;
 
 public class CuentaNoActiva : Exception
 {
-    public CuentaNoActiva(string message)
-        : base(message) { }
+    public Estado EstadoDeLaCuenta { get; }
+
+    public CuentaNoActiva(Estado estado)
+    {
+        this.EstadoDeLaCuenta = estado;
+    }
 }

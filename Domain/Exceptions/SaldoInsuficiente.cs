@@ -2,6 +2,6 @@
 
 public class SaldoInsuficiente : Exception
 {
-    public SaldoInsuficiente(string message)
-        : base(message) { }
+    public SaldoInsuficiente()
+        : base() { }
 }

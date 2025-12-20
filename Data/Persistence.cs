@@ -7,11 +7,25 @@ public class Persistence
     List<CuentaBancaria> Cuentas = new List<CuentaBancaria>();
 
     #region Simulación de fetching de las cuentas
-    CuentaBancaria cajaAhorro1 = new CajaDeAhorro("CA-001", 1000000, ["Genaro", "Mariela"]);
-    CuentaBancaria cajaAhorro2 = new CajaDeAhorro("CA-002", 500000, ["Olga", "Juan"]);
+    CuentaBancaria cajaAhorro1 = new CajaDeAhorro("CA-001", 0, ["Genaro", "Mariela"])
+    {
+        TasaDeInteres = 0.2m
+    };
 
-    CuentaBancaria cuentaCorriente1 = new CuentaCorriente("CC-001", 500000, ["Mario", "Pedro"], 0.05m);
-    CuentaBancaria cuentaCorriente2 = new CuentaCorriente("CC-002", 5500000, ["Juana", "María"], 0.1m);
+    CuentaBancaria cajaAhorro2 = new CajaDeAhorro("CA-002", 0, ["Olga", "Juan"])
+    {
+        TasaDeInteres = 0.1m
+    };
+
+    CuentaBancaria cuentaCorriente1 = new CuentaCorriente("CC-001", 0, ["Mario", "Pedro"], 0.05m)
+    {
+        LimiteDeDescubierto = 50000
+    };
+
+    CuentaBancaria cuentaCorriente2 = new CuentaCorriente("CC-002", 0, ["Juana", "María"], 0.1m)
+    {
+        LimiteDeDescubierto = 100000,
+    };
     #endregion
 
     public Persistence()
@@ -25,7 +39,7 @@ public class Persistence
         Cuentas.Add(cajaAhorro2);
 
         Cuentas.Add(cuentaCorriente1);
-        Cuentas.Add(cuentaCorriente1);
+        Cuentas.Add(cuentaCorriente2);
     }
 
     public List<CuentaBancaria> GetCuentas()

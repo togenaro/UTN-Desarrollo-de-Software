@@ -2,6 +2,6 @@
 
 public class CuentaNoEncontrada : Exception
 {
-    public CuentaNoEncontrada(string message)
-        : base(message) { }
+    public CuentaNoEncontrada()
+        : base() { }
 }

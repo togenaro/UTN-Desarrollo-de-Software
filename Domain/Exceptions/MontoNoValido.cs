@@ -2,6 +2,6 @@
 
 public class MontoNoValido : Exception
 {
-    public MontoNoValido(string message)
-        : base(message) { }
+    public MontoNoValido()
+        : base() { }
 }

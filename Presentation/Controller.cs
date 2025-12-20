@@ -25,16 +25,16 @@ public class Controller
     public void DepositarDinero(string code, decimal mount)
     {
         var account = Accounts.Where(c => c.Numero == code).FirstOrDefault();
-        if (account is null) { throw new CuentaNoEncontrada("Cuenta no encontrada"); }
+        if (account is null) { throw new CuentaNoEncontrada(); }
 
         if (mount <= 0)
         {
-            throw new MontoNoValido("Monto no valido"); //MontoNoValido
+            throw new MontoNoValido(); //MontoNoValido
         }
 
-        if (account.Estado is Estado.Inactiva)
+        if (account.Estado != Estado.Activa)
         {
-            throw new CuentaNoActiva("Cuenta no activa"); //CuentaNoActiva
+            throw new CuentaNoActiva(account.Estado); //CuentaNoActiva
         }
 
         account.Depositar(mount);
@@ -43,22 +43,22 @@ public class Controller
     public void RetirarDinero(string code, decimal mount)
     {
         var account = Accounts.Where(c => c.Numero == code).FirstOrDefault();
-        if (account is null) { throw new Exception(); }
+        if (account is null) { throw new CuentaNoEncontrada(); }
 
         if (mount <= 0)
         {
-            throw new MontoNoValido("Monto no valido"); //MontoNoValido
+            throw new MontoNoValido(); //MontoNoValido
         }
 
-        if (account.Estado is Estado.Inactiva)
+        if (account.Estado != Estado.Activa)
         {
-            throw new CuentaNoActiva("Cuenta no activa"); //CuentaNoActiva
+            throw new CuentaNoActiva(account.Estado); //CuentaNoActiva
         }
 
         if (account is CuentaCorriente cc)
         {
-            if (cc.Saldo - mount >= -cc.LimiteDeDescubierto) { cc.Retirar(mount); }
-            else { throw new SaldoInsuficiente("Saldo insuficiente"); /*SaldoInsuficiente*/ }
+            if (cc.Saldo - mount <= -cc.LimiteDeDescubierto) { cc.Retirar(mount); }
+            else { throw new SaldoInsuficiente(); /*SaldoInsuficiente*/ }
         }
         else { account.Retirar(mount); }
 
@@ -66,7 +66,7 @@ public class Controller
         {
             account.CambiarEstado(Estado.Suspendida);
 
-            throw new SaldoInsuficiente("Saldo insuficiente"); //SaldoInsuficiente
+            throw new SaldoInsuficiente(); //SaldoInsuficiente
         }
     }
     #endregion
