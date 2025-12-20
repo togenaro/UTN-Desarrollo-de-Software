@@ -17,6 +17,7 @@
      * 3) Asegurar que la nueva bodega genérica solo acepte mercancías
      *
      */
-public class Generica
+public class Generica<T>
 {
+
 }
