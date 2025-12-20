@@ -20,7 +20,7 @@ namespace Dsw2025Ej9.Bodegas;
      * 3) Asegurar que la nueva bodega genérica solo acepte mercancías
      *
      */
-public class Generica<T>
+public class Generica<T> where T : Mercancia
 {
     private readonly List<T> _items = [];
 

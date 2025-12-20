@@ -86,29 +86,22 @@ internal class Ejemplos
 
     public static void BodegaGenerica()
     {
+        var bodega = new Generica<Mercancia>();
 
-        var bodega = new Generica<Object>();
-
-        var a1 = new Alimento("Pan");
-        var h1 = new Herramienta("Martillo", false);
-        var pe1 = new ProductoElectronico("Tetris", "Akme");
-
-        bodega.Agregar(a1);
-        bodega.Agregar(h1);
-        bodega.Agregar(pe1);
+        bodega.Agregar(new Alimento("Pan"));
+        bodega.Agregar(new Herramienta("Martillo", false));
+        bodega.Agregar(new ProductoElectronico("Tetris", "Akme"));
 
         var items = bodega.Listar();
 
         Listar(items);
 
-        static void Listar<T>(List<T> lista)
+        static void Listar<T>(List<T> lista) where T : Mercancia
         {
             foreach (var item in lista)
             {
-                Console.WriteLine(item);
+                Console.WriteLine($"Item: {item.Nombre}");
             }
         }
-
-
     }
 }
